@@ -20,25 +20,25 @@ function preload(artwork) {
   });
 }
 
-async function getArtwork(excludeSource = '') {
+async function getArtwork() {
   if (!apiBase) throw new Error('Configure GALLERY_SETTINGS.apiEndpoint with the deployed API URL.');
-  const url = new URL(`${apiBase}/api/artwork`);
-  if (excludeSource) url.searchParams.set('exclude', excludeSource);
-  const response = await fetch(url, { cache: 'no-store' });
+  const response = await fetch(`${apiBase}/api/artwork`, { cache: 'no-store' });
+																	
+														   
   if (!response.ok) throw new Error('Museum API request failed.');
   return response.json();
 }
 
-async function requestArtwork(excludeSource) {
+async function requestArtwork() {
   for (let attempt = 0; attempt < GALLERY_SETTINGS.maximumLoadAttempts; attempt += 1) {
-    try { return await preload(await getArtwork(excludeSource)); } catch { /* Request another random candidate. */ }
+    try { return await preload(await getArtwork()); } catch { /* Request another random candidate. */ }
   }
   throw new Error('No HD landscape artwork is currently available.');
 }
 
-async function prepareNextArtwork(excludeSource) {
+async function prepareNextArtwork() {
   while (true) {
-    try { return await requestArtwork(excludeSource); } catch { /* Keep preparing a replacement in the background. */ }
+    try { return await requestArtwork(); } catch { /* Keep preparing a replacement in the background. */ }
   }
 }
 
@@ -62,7 +62,7 @@ async function runGallery() {
     let current = await prepareNextArtwork();
     while (true) {
       show(current);
-      const next = prepareNextArtwork(current.artwork.source);
+      const next = prepareNextArtwork();
       await new Promise((resolve) => setTimeout(resolve, GALLERY_SETTINGS.displayDuration));
       current = await next;
     }
