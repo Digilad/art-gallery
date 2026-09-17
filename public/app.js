@@ -4,8 +4,7 @@ const image = document.querySelector('#artwork');
 const caption = document.querySelector('#caption');
 const status = document.querySelector('#status');
 const fields = { title: document.querySelector('#title'), artist: document.querySelector('#artist'), year: document.querySelector('#year'), museum: document.querySelector('#museum') };
-const isLocalServer = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
-const apiBase = isLocalServer ? window.location.origin : GALLERY_SETTINGS.apiEndpoint.replace(/\/$/, '');
+const apiBase = GALLERY_SETTINGS.apiEndpoint.replace(/\/$/, '');
 
 const meetsDisplayRequirements = (candidate) => candidate.naturalWidth >= GALLERY_SETTINGS.targetResolution.width
   && candidate.naturalHeight >= GALLERY_SETTINGS.targetResolution.height
