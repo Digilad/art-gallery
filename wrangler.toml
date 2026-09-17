@@ -1,0 +1,7 @@
+name = "art-gallery-proxy"
+main = "worker.js"
+compatibility_date = "2026-09-17"
+workers_dev = true
+
+[vars]
+ARTISTS_URL = "https://raw.githubusercontent.com/digilad/digilad.github.io/main/data/artists.txt"

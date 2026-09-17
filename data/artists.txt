@@ -1,0 +1,4 @@
+# Add one artist name per line. Leave this file empty to use random artists.
+# Claude Monet
+# Vincent van Gogh
+

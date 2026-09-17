@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Art Gallery</title>
+    <link rel="stylesheet" href="public/styles.css" />
+  </head>
+  <body>
+    <main class="gallery" aria-live="polite">
+      <img id="artwork" alt="Loading artwork" />
+      <section class="caption" id="caption" hidden>
+        <p id="title"></p>
+        <p id="artist"></p>
+        <p id="year"></p>
+      </section>
+      <p id="status" class="status">Finding an artwork…</p>
+    </main>
+    <script type="module" src="public/app.js"></script>
+  </body>
+</html>
