@@ -7,5 +7,5 @@ export const GALLERY_SETTINGS = {
   // Number of attempts before reporting that no suitable image was found.
   maximumLoadAttempts: 12,
   // Leave empty for the local Node server. Set the Cloudflare Worker HTTPS URL for GitHub Pages.
-  apiEndpoint: ''
+  apiEndpoint: 'https://art-gallery.digilad.workers.dev'
 };
