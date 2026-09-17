@@ -3,7 +3,7 @@ import { GALLERY_SETTINGS } from './config.js';
 const image = document.querySelector('#artwork');
 const caption = document.querySelector('#caption');
 const status = document.querySelector('#status');
-const fields = { title: document.querySelector('#title'), artist: document.querySelector('#artist'), year: document.querySelector('#year') };
+const fields = { title: document.querySelector('#title'), artist: document.querySelector('#artist'), year: document.querySelector('#year'), museum: document.querySelector('#museum') };
 const isLocalServer = ['localhost', '127.0.0.1', '::1'].includes(window.location.hostname);
 const apiBase = isLocalServer ? window.location.origin : GALLERY_SETTINGS.apiEndpoint.replace(/\/$/, '');
 
@@ -48,6 +48,8 @@ function show({ artwork, candidate }) {
   fields.artist.textContent = artwork.artist;
   fields.year.textContent = artwork.year;
   fields.year.hidden = !artwork.year;
+  fields.museum.textContent = artwork.museum || artwork.apiMethod;
+  fields.museum.hidden = !fields.museum.textContent;
   caption.hidden = false;
   status.hidden = true;
   requestAnimationFrame(() => image.classList.add('visible'));
